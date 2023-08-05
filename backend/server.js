@@ -4,6 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const { connection } = require('./configs/connection');
 const { userRoute } = require('./routes/user.route');
+const { blogRoute } = require('./routes/blog.route');
 
 // Load environment variables from .env file
 dotenv.config();
@@ -39,6 +40,7 @@ app.get('/', async (req, res) => {
 
 
 app.use('/users', userRoute)
+app.use('/blogs', blogRoute)
 
 // Start the server and listen on the specified port
 connection.sync().then(() => {
