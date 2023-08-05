@@ -2,6 +2,8 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const { connection } = require('./configs/connection');
+const { userRoute } = require('./routes/user.route');
 
 // Load environment variables from .env file
 dotenv.config();
@@ -11,6 +13,8 @@ const PORT = process.env.PORT || 8080;
 
 // Create an instance of the Express application
 const app = express();
+app.use(express.json());
+
 
 // Middleware to enable Cross-Origin Resource Sharing (CORS)
 app.use(cors());
@@ -33,7 +37,12 @@ app.get('/', async (req, res) => {
     }
 });
 
+
+app.use('/users', userRoute)
+
 // Start the server and listen on the specified port
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+connection.sync().then(() => {
+    app.listen(8080, () => {
+        console.log('Server is listening to the port : 8080');
+    })
+})

@@ -134,11 +134,19 @@ The API uses JSON Web Tokens (JWT) for authentication. To access protected route
   }
   ```
 
-#### Get All Users
+### Get All Users
 
 - Method: GET
 - URL: `/users`
 - Description: Get information about all users.
+
+**Query Parameters:**
+
+| Parameter   | Type     | Description                              |
+| ----------- | -------- | ---------------------------------------- |
+| gender      | String   | Filter users by gender (male, female, etc.).       |
+| sort        | String   | Sort users by age or time (createdAt).          |
+| order       | String   | Specify sorting order (asc or desc). Default is asc. |
 
 **Responses:**
 
@@ -162,6 +170,18 @@ The API uses JSON Web Tokens (JWT) for authentication. To access protected route
     "error": "Failed to fetch users."
   }
   ```
+
+**Description:**
+
+This endpoint allows you to retrieve information about all the users registered in the system. You can filter the users based on their gender and sort the results by age or the time of their registration (createdAt).
+
+**Query Parameters:**
+
+- `gender`: You can specify a gender value (e.g., "male", "female") to filter the users based on their gender. If this parameter is not provided, all users will be returned regardless of their gender.
+
+- `sort`: You can use this parameter to sort the users based on their age or the time of their registration. Accepted values are "age" and "createdAt". If this parameter is not provided, the users will be sorted by their database IDs.
+
+- `order`: This parameter specifies the sorting order, and it can have two possible values: "asc" (ascending) and "desc" (descending). The default sorting order is "asc".
 
 #### Get Single User by ID
 
