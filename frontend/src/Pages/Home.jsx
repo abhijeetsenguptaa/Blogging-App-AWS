@@ -15,7 +15,7 @@ export default function Home() {
 
     function fetchData(page) {
         setLoading(true);
-        fetch(`http://localhost:80/blogs?limit=4&page=${page}`)
+        fetch(`http://65.2.80.154:3002/blogs?limit=4&page=${page}`)
             .then((res) => res.json())
             .then((data) => {
                 setData(data);
@@ -67,7 +67,7 @@ export default function Home() {
             </div>
             {loading ? (
                 <div className="flex items-center justify-center h-64">
-                    <img src={loadingUrl} alt="Loading..." />
+                    <img src={loadingUrl} alt="Loading..." className='w-1/2'/>
                 </div>
             ) : error ? (
                 <div className="text-red-500">Error fetching data. Please try again later.</div>

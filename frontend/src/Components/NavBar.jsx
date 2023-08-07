@@ -26,7 +26,7 @@ export default function NavBar() {
                 <ButtonsOnNavBar name={'Login'} link={'/login'} />
             )}
             <ButtonsOnNavBar name={'Register'} link={'/register'} />
-            <ButtonsOnNavBar name={'Your Blogs'} link={'/your-blogs'} />
+            <ButtonsOnNavBar name={'Your Profile'} link={'/your-blogs'} />
         </div>
     );
 }

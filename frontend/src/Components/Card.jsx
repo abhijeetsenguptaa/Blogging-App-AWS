@@ -15,9 +15,10 @@ export default function Card(props) {
             },
         };
 
-        fetch(`http://localhost:80/blogs/${props.id}`, requestOptions)
+        fetch(`http://65.2.80.154:3002/blogs/${props.id}`, requestOptions)
             .then(res => res.json())
             .then(data => {
+                console.log(data)
                 // Check if the response data contains comments
                 if (data && data.comments && data.comments.length > 0) {
                     setComments(data.comments.length);

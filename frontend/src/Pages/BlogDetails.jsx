@@ -36,7 +36,7 @@ export default function BlogDetails() {
 
         setLoading(true); // Set loading state to true before making the API call
 
-        fetch(`http://localhost:80/blogs/${id}`, {
+        fetch(`http://65.2.80.154:3002/blogs/${id}`, {
             method: "GET",
             headers: {
                 "Content-type": "application/json",
@@ -92,7 +92,7 @@ export default function BlogDetails() {
         setLoading(true);
 
         // Make a POST request to add a new comment
-        fetch(`http://localhost:80/comments/${id}`, {
+        fetch(`http://65.2.80.154:3002/comments/${id}`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -133,7 +133,7 @@ export default function BlogDetails() {
     
         setLoading(true);
     
-        fetch(`http://localhost:80/comments/${commentId}`, {
+        fetch(`http://65.2.80.154:3002/comments/${commentId}`, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json",

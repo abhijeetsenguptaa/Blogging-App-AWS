@@ -20,7 +20,7 @@ const RegisterForm = () => {
 
         try {
             // Send a POST request to register endpoint with user details
-            const response = await fetch('http://localhost:80/users/register', {
+            const response = await fetch('http://65.2.80.154:3002/users/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
