@@ -5,12 +5,15 @@ const dotenv = require('dotenv');
 const { connection } = require('./configs/connection');
 const { userRoute } = require('./routes/user.route');
 const { blogRoute } = require('./routes/blog.route');
+const { User } = require('./models/user.model');
+const BlogPost = require('./models/blog.model');
+const { commentRoute } = require('./routes/comment.route');
 
 // Load environment variables from .env file
 dotenv.config();
 
 // Set the default port for the server
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3001;
 
 // Create an instance of the Express application
 const app = express();
@@ -41,10 +44,11 @@ app.get('/', async (req, res) => {
 
 app.use('/users', userRoute)
 app.use('/blogs', blogRoute)
+app.use('/comments', commentRoute)
 
 // Start the server and listen on the specified port
 connection.sync().then(() => {
-    app.listen(8080, () => {
-        console.log('Server is listening to the port : 8080');
+    app.listen(PORT, () => {
+        console.log('Server is listening to the port : 3001');
     })
 })

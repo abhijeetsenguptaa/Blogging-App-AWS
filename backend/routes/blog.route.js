@@ -8,7 +8,7 @@ const {
     getAllBlogs,
     getBlogById,
     updateBlog,
-    deleteBlog,
+    deleteBlog
 } = require('../controllers/blog.controller');
 const { authentication } = require('../middleware/authentication.middleware');
 

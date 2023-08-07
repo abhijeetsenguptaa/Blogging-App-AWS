@@ -1,5 +1,7 @@
 const { Op } = require('sequelize');
 const BlogPost = require('../models/blog.model');
+const { User } = require('../models/user.model');
+const Comment = require('../models/comment.model');
 
 // Controller to create a new blog post
 const createBlog = async (req, res) => {
@@ -66,6 +68,25 @@ const getAllBlogs = async (req, res) => {
             options.order = [[sortBy, sortOrder]];
         }
 
+        // Include the User model to retrieve user information
+        options.include = [
+            {
+                model: User,
+                attributes: ['id', 'firstName', 'email'], // Specify the attributes you want to include from the User model
+            },{
+                model : Comment,
+                as: 'comments',
+                attributes:['id','text','userId'], // Include the 'id' and 'text' attributes of the Comment model
+                include: [
+                    {
+                        model: User, // Include the User model associated with each Comment
+                        attributes: ['firstName'], // Specify the attributes you want to include from the User model
+                        as: 'user', // Use an alias for the User model to avoid conflict with the outer User model
+                    },
+                ],
+            }
+        ];
+
         // Fetch all blog posts from the database based on the query options
         const blogs = await BlogPost.findAll(options);
 
@@ -80,13 +101,33 @@ const getAllBlogs = async (req, res) => {
 };
 
 
-// Controller to fetch a single blog post by its ID
+
+
 const getBlogById = async (req, res) => {
     try {
         const { id } = req.params;
 
         // Find the blog post by its ID in the database
-        const blog = await BlogPost.findByPk(id);
+        const blog = await BlogPost.findByPk(id, {
+            include: [
+                {
+                    model: User,
+                    attributes: ['id', 'firstName', 'email'], // Specify the attributes you want to include from the User model
+                },
+                {
+                    model: Comment,
+                    as: 'comments',
+                    attributes: ['id', 'text', 'userId'], // Include the 'id' and 'text' attributes of the Comment model
+                    include: [
+                        {
+                            model: User, // Include the User model associated with each Comment
+                            attributes: ['firstName'], // Specify the attributes you want to include from the User model
+                            as: 'user', // Use an alias for the User model to avoid conflict with the outer User model
+                        },
+                    ],
+                },
+            ],
+        });
 
         // Check if the blog post exists
         if (!blog) {
@@ -104,6 +145,7 @@ const getBlogById = async (req, res) => {
         });
     }
 };
+
 
 // Controller to update a blog post by its ID
 const updateBlog = async (req, res) => {
@@ -127,18 +169,26 @@ const updateBlog = async (req, res) => {
                 error: 'Blog post not found.',
             });
         }
-
-        // Update the blog post
-        if (title) {
-            blog.title = title;
+        // Check if the authenticated user is the creator of the blog post
+        if (blog.userId !== userId) {
+            return res.status(403).json({
+                error: 'Access denied. You are not the creator of this blog post.',
+            });
         }
-        if (content) {
-            blog.content = content;
-        }
-        await blog.save();
 
-        // Return the updated blog post
-        res.status(200).json(blog);
+        else {
+            // Update the blog post
+            if (title) {
+                blog.title = title;
+            }
+            if (content) {
+                blog.content = content;
+            }
+            await blog.save();
+
+            // Return the updated blog post
+            res.status(200).json(blog);
+        }
     } catch (error) {
         console.error('Error while updating the blog post:', error);
         res.status(500).json({
@@ -159,6 +209,12 @@ const deleteBlog = async (req, res) => {
         if (!blog) {
             return res.status(404).json({
                 error: 'Blog post not found.',
+            });
+        }
+        // Check if the authenticated user is the creator of the blog post
+        if (blog.userId !== userId) {
+            return res.status(403).json({
+                error: 'Access denied. You are not the creator of this blog post.',
             });
         }
 
@@ -182,5 +238,5 @@ module.exports = {
     getAllBlogs,
     getBlogById,
     updateBlog,
-    deleteBlog,
+    deleteBlog
 };
