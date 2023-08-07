@@ -1,5 +1,5 @@
 const BlogPost = require("../models/blog.model");
-const Comment = require("../models/comment.model");
+const { Comment } = require("../models/comment.model");
 const { User } = require("../models/user.model");
 
 async function postingComment(req, res) {

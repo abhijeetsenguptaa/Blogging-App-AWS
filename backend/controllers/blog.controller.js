@@ -1,7 +1,7 @@
 const { Op } = require('sequelize');
 const BlogPost = require('../models/blog.model');
 const { User } = require('../models/user.model');
-const Comment = require('../models/comment.model');
+const { Comment } = require('../models/comment.model');
 
 // Controller to create a new blog post
 const createBlog = async (req, res) => {
@@ -73,10 +73,10 @@ const getAllBlogs = async (req, res) => {
             {
                 model: User,
                 attributes: ['id', 'firstName', 'email'], // Specify the attributes you want to include from the User model
-            },{
-                model : Comment,
+            }, {
+                model: Comment,
                 as: 'comments',
-                attributes:['id','text','userId'], // Include the 'id' and 'text' attributes of the Comment model
+                attributes: ['id', 'text', 'userId'], // Include the 'id' and 'text' attributes of the Comment model
                 include: [
                     {
                         model: User, // Include the User model associated with each Comment
@@ -205,17 +205,32 @@ const deleteBlog = async (req, res) => {
         // Find the blog post by its ID in the database
         const blog = await BlogPost.findByPk(id);
 
+        const comments = await Comment.findAll({
+            where: {
+                blogID: id
+            }
+        });
+
         // Check if the blog post exists
         if (!blog) {
             return res.status(404).json({
                 error: 'Blog post not found.',
             });
         }
+
         // Check if the authenticated user is the creator of the blog post
+        // Replace 'userId' with the actual user ID obtained from authentication (e.g., JWT token)
+        // const userId = req.user.id; // Replace this with the actual user ID obtained from authentication
+
         if (blog.userId !== userId) {
             return res.status(403).json({
                 error: 'Access denied. You are not the creator of this blog post.',
             });
+        }
+
+        // Delete all comments associated with the blog post
+        for (const comment of comments) {
+            await comment.destroy();
         }
 
         // Delete the blog post
@@ -223,7 +238,7 @@ const deleteBlog = async (req, res) => {
 
         // Return success message
         res.status(200).json({
-            message: 'Blog post deleted successfully.',
+            message: 'Blog post and associated comments deleted successfully.',
         });
     } catch (error) {
         console.error('Error while deleting the blog post:', error);
@@ -232,6 +247,7 @@ const deleteBlog = async (req, res) => {
         });
     }
 };
+
 
 module.exports = {
     createBlog,

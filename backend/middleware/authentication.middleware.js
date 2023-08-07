@@ -10,7 +10,7 @@ const authentication = async (req, res, next) => {
             });
         }
 
-        jwt.verify(token, process.env.JWT_SECRET_KEY, (err, decoded) => {
+        jwt.verify(token, "abhijeet", (err, decoded) => {
             if (err) {
                 return res.status(401).json({
                     error: 'Invalid token. Please provide a valid token.',
