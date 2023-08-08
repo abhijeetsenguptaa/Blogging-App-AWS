@@ -19,7 +19,7 @@ const LoginForm = () => {
 
         try {
             // Send a POST request to login endpoint with email and password
-            const response = await fetch('http://3.7.46.112:3002/users/login', {
+            const response = await fetch('https://weary-bee-gaiters.cyclic.app/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ const LoginForm = () => {
 
         try {
             // Send a POST request to the reset-password endpoint with the reset email
-            const response = await fetch('http://3.7.46.112:3002/users/reset-password', {
+            const response = await fetch('https://weary-bee-gaiters.cyclic.app/users/reset-password', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

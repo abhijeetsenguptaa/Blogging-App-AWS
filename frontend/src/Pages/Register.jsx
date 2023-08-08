@@ -20,7 +20,7 @@ const RegisterForm = () => {
 
         try {
             // Send a POST request to register endpoint with user details
-            const response = await fetch('http://3.7.46.112:3002/users/register', {
+            const response = await fetch('https://weary-bee-gaiters.cyclic.app/users/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

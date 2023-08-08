@@ -14,7 +14,7 @@ This is the frontend for the Blogging App, built using React and other technolog
 
 ## Deployment
 
-The frontend of the Blogging App is deployed on Vercel. You can access the live application at [https://your-blogging-app.vercel.app](https://your-blogging-app.vercel.app).
+The frontend of the Blogging App is deployed on Vercel. You can access the live application at [https://blogging-level-supermind.vercel.app/](https://blogging-level-supermind.vercel.app/).
 
 ## Technologies Used
 
@@ -90,7 +90,7 @@ src/
 
 ## Deployment
 
-The frontend is deployed on Vercel at [https://your-blogging-app.vercel.app](https://your-blogging-app.vercel.app). The application is continuously deployed using Vercel's Git integration, and any changes pushed to the `main` branch are automatically deployed.
+The frontend is deployed on Vercel at [https://blogging-level-supermind.vercel.app/](https://blogging-level-supermind.vercel.app/). The application is continuously deployed using Vercel's Git integration, and any changes pushed to the `main` branch are automatically deployed.
 
 ## Contributing
 
