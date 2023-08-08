@@ -2,11 +2,10 @@ const Sequelize = require('sequelize');
 require('dotenv').config()
 
 
-const connection = new Sequelize('blogging', 'admin', 'Abhijeet0', {
-    'host': 'database-1.cizw8pjlomm7.ap-south-1.rds.amazonaws.com',
+const connection = new Sequelize(DB_DATABASE, DB_USERNAME, DB_PASSWORD, {
+    'host': DB_HOST,
     'dialect': 'mysql'
 })
-
 
 
 
