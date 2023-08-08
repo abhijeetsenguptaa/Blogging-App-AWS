@@ -27,7 +27,7 @@ export default function CreateBlog() {
             }
 
             // Send a POST request to create the blog post
-            const response = await fetch('http://65.2.80.154:3002/blogs/create', {
+            const response = await fetch('http://3.7.46.112:3002/blogs/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

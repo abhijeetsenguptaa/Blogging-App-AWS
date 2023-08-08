@@ -40,7 +40,7 @@ export default function YourBlogs() {
     const handleUpdateProfile = async () => {
         try {
             // Send a PUT request to update the user profile
-            const response = await fetch(`http://65.2.80.154:3002/users/${userData.id}`, {
+            const response = await fetch(`http://3.7.46.112:3002/users/${userData.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ export default function YourBlogs() {
     const handleUpdateBlog = async (id) => {
         try {
             // Send a PUT request to update the blog post
-            const response = await fetch(`http://65.2.80.154:3002/blogs/${id}`, {
+            const response = await fetch(`http://3.7.46.112:3002/blogs/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ export default function YourBlogs() {
         }
 
         // Send a DELETE request to delete the user profile
-        fetch(`http://65.2.80.154:3002/users/${id}`, {
+        fetch(`http://3.7.46.112:3002/users/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -135,7 +135,7 @@ export default function YourBlogs() {
         }
 
         // Send a DELETE request to delete the blog post
-        fetch(`http://65.2.80.154:3002/blogs/${id}`, {
+        fetch(`http://3.7.46.112:3002/blogs/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -171,7 +171,7 @@ export default function YourBlogs() {
         } else {
             const decodedToken = jwtDecode(token).userId;
 
-            fetch(`http://65.2.80.154:3002/users/${decodedToken}`, {
+            fetch(`http://3.7.46.112:3002/users/${decodedToken}`, {
                 method: 'GET',
                 headers: {
                     'Content-type': 'application/json',
@@ -181,7 +181,7 @@ export default function YourBlogs() {
                 .then((res) => res.json())
                 .then((data) => setUserData(data));
 
-            fetch('http://65.2.80.154:3002/blogs')
+            fetch('http://3.7.46.112:3002/blogs')
                 .then((res) => {
                     if (!res.ok) {
                         throw new Error('Failed to fetch blogs.');

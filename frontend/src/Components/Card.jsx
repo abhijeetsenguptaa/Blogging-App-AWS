@@ -15,7 +15,7 @@ export default function Card(props) {
             },
         };
 
-        fetch(`http://65.2.80.154:3002/blogs/${props.id}`, requestOptions)
+        fetch(`http://3.7.46.112:3002/blogs/${props.id}`, requestOptions)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
