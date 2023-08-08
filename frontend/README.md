@@ -104,6 +104,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 If you have any questions or need further assistance, feel free to reach out:
 
-Your Name - your@email.com
+Your Name - senguptabhijeet@email.com
 
 Project Repository: [https://github.com/abhijeetsenguptaa/Blogging-App-AWS](https://github.com/abhijeetsenguptaa/Blogging-App-AWS)
