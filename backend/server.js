@@ -13,7 +13,7 @@ const { commentRoute } = require('./routes/comment.route');
 dotenv.config();
 
 // Set the default port for the server
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 443;
 
 // Create an instance of the Express application
 const app = express();
@@ -49,6 +49,6 @@ app.use('/comments', commentRoute)
 // Start the server and listen on the specified port
 connection.sync().then(() => {
     app.listen(PORT, () => {
-        console.log('Server is listening to the port : 3002');
+        console.log('Server is listening to the port : 443');
     })
 })
