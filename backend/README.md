@@ -6,7 +6,7 @@ Blogging-App-AWS is a full stack web application that allows users to create, re
 
 ## Base URL
 
-- Live: 
+- Live: [http://3.110.164.90:3003/](http://3.110.164.90:3003/)
 - Local: [http://localhost:8080](http://localhost:8080)
 
 ## Authentication
