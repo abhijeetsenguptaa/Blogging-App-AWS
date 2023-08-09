@@ -519,6 +519,7 @@ Please note that pagination allows you to efficiently retrieve large datasets of
 
 - Node.js
 - Express.js
+- AWS - EC2, RDS
 - MongoDB (with Mongoose)
 - JSON Web Tokens (JWT)
 - cors

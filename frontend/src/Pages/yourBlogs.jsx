@@ -40,7 +40,7 @@ export default function YourBlogs() {
     const handleUpdateProfile = async () => {
         try {
             // Send a PUT request to update the user profile
-            const response = await fetch(`https://weary-bee-gaiters.cyclic.app/users/${userData.id}`, {
+            const response = await fetch(`http://3.110.164.90:3003/users/${userData.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ export default function YourBlogs() {
     const handleUpdateBlog = async (id) => {
         try {
             // Send a PUT request to update the blog post
-            const response = await fetch(`https://weary-bee-gaiters.cyclic.app/blogs/${id}`, {
+            const response = await fetch(`http://3.110.164.90:3003/blogs/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ export default function YourBlogs() {
         }
 
         // Send a DELETE request to delete the user profile
-        fetch(`https://weary-bee-gaiters.cyclic.app/users/${id}`, {
+        fetch(`http://3.110.164.90:3003/users/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -135,7 +135,7 @@ export default function YourBlogs() {
         }
 
         // Send a DELETE request to delete the blog post
-        fetch(`https://weary-bee-gaiters.cyclic.app/blogs/${id}`, {
+        fetch(`http://3.110.164.90:3003/blogs/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -171,7 +171,7 @@ export default function YourBlogs() {
         } else {
             const decodedToken = jwtDecode(token).userId;
 
-            fetch(`https://weary-bee-gaiters.cyclic.app/users/${decodedToken}`, {
+            fetch(`http://3.110.164.90:3003/users/${decodedToken}`, {
                 method: 'GET',
                 headers: {
                     'Content-type': 'application/json',
@@ -181,7 +181,7 @@ export default function YourBlogs() {
                 .then((res) => res.json())
                 .then((data) => setUserData(data));
 
-            fetch('https://weary-bee-gaiters.cyclic.app/blogs')
+            fetch('http://3.110.164.90:3003/blogs')
                 .then((res) => {
                     if (!res.ok) {
                         throw new Error('Failed to fetch blogs.');

@@ -15,7 +15,7 @@ export default function Card(props) {
             },
         };
 
-        fetch(`https://weary-bee-gaiters.cyclic.app/blogs/${props.id}`, requestOptions)
+        fetch(`http://3.110.164.90:3003/blogs/${props.id}`, requestOptions)
             .then(res => res.json())
             .then(data => {
                 console.log(data)

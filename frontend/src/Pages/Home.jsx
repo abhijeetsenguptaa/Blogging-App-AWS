@@ -15,7 +15,7 @@ export default function Home() {
 
     function fetchData(page) {
         setLoading(true);
-        fetch(`https://weary-bee-gaiters.cyclic.app/blogs?limit=4&page=${page}`)
+        fetch(`http://3.110.164.90:3003/blogs?limit=4&page=${page}`)
             .then((res) => res.json())
             .then((data) => {
                 setData(data);

@@ -27,7 +27,7 @@ export default function CreateBlog() {
             }
 
             // Send a POST request to create the blog post
-            const response = await fetch('https://weary-bee-gaiters.cyclic.app/blogs/create', {
+            const response = await fetch('http://3.110.164.90:3003/blogs/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

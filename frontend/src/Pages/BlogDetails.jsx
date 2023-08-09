@@ -36,7 +36,7 @@ export default function BlogDetails() {
 
         setLoading(true); // Set loading state to true before making the API call
 
-        fetch(`https://weary-bee-gaiters.cyclic.app/blogs/${id}`, {
+        fetch(`http://3.110.164.90:3003/blogs/${id}`, {
             method: "GET",
             headers: {
                 "Content-type": "application/json",
@@ -92,7 +92,7 @@ export default function BlogDetails() {
         setLoading(true);
 
         // Make a POST request to add a new comment
-        fetch(`https://weary-bee-gaiters.cyclic.app/comments/${id}`, {
+        fetch(`http://3.110.164.90:3003/comments/${id}`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -133,7 +133,7 @@ export default function BlogDetails() {
     
         setLoading(true);
     
-        fetch(`https://weary-bee-gaiters.cyclic.app/comments/${commentId}`, {
+        fetch(`http://3.110.164.90:3003/comments/${commentId}`, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json",
