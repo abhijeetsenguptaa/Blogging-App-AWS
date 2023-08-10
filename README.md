@@ -5,7 +5,7 @@
 Blogging-App-AWS is a full stack web application that allows users to create, read, update, and delete blog posts. It is an authentication-based app that utilizes JSON Web Tokens (JWT) for user authentication. The application provides various endpoints to handle user registration, login, and managing blog posts.
 
 ## Base URL
-
+- [Video Explanation](https://drive.google.com/file/d/1KRGJEajqBfiJOxl7HhjwPCluT7qTkNf3/view?usp=drive_link)
 - Live: [http://3.110.164.90:3003/](http://3.110.164.90:3003/)
 - Local: [http://localhost:3003](http://localhost:3003)
 
